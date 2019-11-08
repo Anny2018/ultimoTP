@@ -8,8 +8,8 @@ export default class Cities extends React.Component {
   
     async componentDidMount(){
       const res =  await axios.get('http://localhost:5000/api/city');
-      this.setState({listaPaises:res.data.cities});
-      console.log(this.state.listaPaises.cities);
+      this.setState({listaPaises:res});
+      console.log(this.state.listaPaises);
     }
 
 
