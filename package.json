@@ -1,0 +1,25 @@
+{
+  "name": "Backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd mern-master/ && npm run start",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
