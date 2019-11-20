@@ -1,45 +1,98 @@
-import React from 'react';
-import axios from 'axios';
+import React,{Component} from 'react';
+import {getCities} from './action/citiesAction';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class Cities extends React.Component {
-    state ={
-        listaPaises: []
+class Cities extends Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+
     }
+  }
+
+  static propTypes = {
+    getCities: PropTypes.func.isRequired,
+    city: PropTypes.object.isRequired, 
+  // isAuthenticated: PropTypes.bool
+};
+  /*   state ={
+        listaPaises: []
+    } */
+ /*    static propType={
+      getCities:this.propType.func.isRequired,
+      city:PropTypes.object.isRequired
+    }; */
   
-    async componentDidMount(){
-      const res =  await axios.get('http://localhost:5000/api/city');
-      this.setState({listaPaises:res});
-      console.log(this.state.listaPaises);
+     componentDidMount(){
+     /*  const res =  await axios.get('http://localhost:5000/api/city');
+      this.setState({listaPaises:res.data.cities});
+      console.log(this.state.listaPaises); */
+      this.props.getCities();
     }
 
 
     render() {
-        return(
-     /*  <div>
-        <h1>Lista de paises</h1>
-        <ul>
-          {this.state.listaPaises.map((elem,i)=>{return <li key={i}>{elem.name} {elem.country}</li>})}
-        </ul>
-      </div> */
+      const cities = this.props.city.cities;
+      console.log(cities);
+      return(
 
-      <div className="row">
-
-      <div className="col-md-4">
-          Paises
-      </div>
-      <div className="col-md-8">
-          <ul className="list-group">
-              {
-                  this.state.listaPaises.map(pais => <li className="list-group-item list-group-item-action" key={pais._id}>
-                    {pais.name} {pais.country}
-                  </li>)
-              }
-          </ul>
-      </div>
+        <div>
     
+        <ul>
+        {cities.map((elem, i)=>{return <li key={i}>{elem.name} </li>})}           
+        </ul>
+    </div>
 
-        </div>
+
+        //{
+          /* <div className="container">
         
+            {
+                cities.map(cities => {
+                    return (
+                        <div key={cities._id}>
+                            <h5 > {cities.name}</h5>
+                           
+                        </div>
+                    )
+                })
+            }
+
+        
+    </div> */
+  //}
+/* 
+        <div>
+        
+        <ul>
+        {cities.map((elem, i)=>{return <li key={i}>{elem.name}</li>})}           
+        </ul>
+    </div> */
+       /*  <div>
+        <div>
+        {
+             cities.map(cities => {
+                 return (
+                     <div key={cities._id}>
+                         <h5 > {cities.name}</h5>
+                         
+                     </div>
+                 )
+             })
+         }
+        </div>
+        </div> */
       )
+ 
+   
+        
     }
 };
+
+const mapStateToProps= state =>({
+  city: state.city
+});
+
+export default  connect(mapStateToProps,{getCities})(Cities);
