@@ -14,12 +14,12 @@ router.get('/iteneraris',(req, res) => {
 
 router.post('/itinerary', (req, res) => {
     const newCity = new itineraryModel(req.body);
-    newCity.save((err, citySaved) => {
+    newCity.save((err, city) => {
         if (err) {
             console.log('Error save user: ', error);
             return res.status(500).json({ err: 'Error al guardar usuario.'})
         }
-        res.status(200).json({ newCity: citySaved});
+        res.status(200).json({city});
     })
 });
 

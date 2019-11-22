@@ -1,11 +1,11 @@
 li{
-    list-style-type:none;
+    
     width:150px;
 }
 ul{
-    display:flex;
+  /*   display:flex; */
     padding-top:1%;
-    margin-left:-5%;
+    margin-left:40%;
     flex-direction:row;
     justify-content: center;
 }

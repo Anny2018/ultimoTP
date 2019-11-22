@@ -8,7 +8,7 @@ router.get('/city',(req, res) => {
             console.log('Error find users: ', error);
             return res.status(500).json({ err: 'Error al consultar usuarios.'})
         }
-        res.status(200).json({ cities: cities });
+        res.status(200).json(cities);
     });
 });
 
