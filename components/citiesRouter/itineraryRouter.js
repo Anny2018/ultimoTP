@@ -8,7 +8,7 @@ router.get('/iteneraris',(req, res) => {
             console.log('Error find users: ', error);
             return res.status(500).json({ err: 'Error al consultar usuarios.'})
         }
-        res.status(200).json({iteneraris:iteneraris });
+        res.status(200).json({iteneraris });
     });
 });
 

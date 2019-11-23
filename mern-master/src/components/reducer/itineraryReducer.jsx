@@ -4,14 +4,14 @@ const initialState={
     itineraris:[]
 }
 
-export default function(state = initialState,action){
+export default function(stateitinerary=initialState,action){
     switch (action.type){
         case GET_ITINERARY:
             return{
-                ...state,
-                itineraris:action.payload
+                ...stateitinerary,
+                itineraris: action.payload
             };
             default:
-                return state;
+                return stateitinerary;
     }
 }

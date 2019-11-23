@@ -61,8 +61,8 @@ class Itineraris extends Component {
 
 
     render() {
-      const itinerary = this.props.itineraris;
-      console.log(itinerary);
+    /*   const itinerary = this.props.itineraris;
+      console.log(itinerary); */
      /*  console.log(JSON.stringify(cities)) */
       return(
         <div>
@@ -82,10 +82,10 @@ class Itineraris extends Component {
 };
 
 const mapStateToProps= state =>{
-  console.log(state);
+  console.log(state.itinerary);
   
   return{
-    itineraris: state.itineraris}
+    itineraris:state.itinerary}
 };
 
-export default  connect(mapStateToProps,{getItineraris})(Itineraris);
+export default connect(mapStateToProps,{getItineraris})(Itineraris);
