@@ -19,3 +19,13 @@ export const getCities = () => dispach =>{
         })
         )
 }
+
+import axios from 'axios';
+const allCities = () => async (dispatch, getState) => {
+    // const response = await fetch("http://localhost:3001/api/cities").then(resp=>resp.json());
+    // dispatch({ type: 'GET_CITIES', payload: response })
+    // axios.defaults.headers.common.Authorization = 'bearer ' + localStorage.getItem('token');
+    const response = await axios.get("http://localhost:3001/api/cities");
+    dispatch({ type: 'GET_CITIES', payload: response.data })
+
+}

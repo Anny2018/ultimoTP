@@ -6,10 +6,11 @@ import {Provider} from 'react-redux';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Login from './components/login';
 import Signup from './components/signup';
-import Cities from './components/cities';
+import Itineraris from './components/itineraris';
 import store from './store';
 
 import './App.css';
+
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
       <Header />
       <Router>
                 <Switch>
-                  <Route exact={true} path="/" component={Content} />
-                  <Route path="/cities" component={Cities} />
+                <Route exact path="/" component={Login} />  
+                  <Route path="/" component={Content} />
+                 {/*  <Route path="/cities" component={Cities} /> */}
+                  <Route path="/cities" component={Itineraris} />
                   <Route path="/login" component={Login} />
                   <Route path="/signup" component={Signup} />
                 </Switch>  

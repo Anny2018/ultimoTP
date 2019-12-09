@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import {getItineraris} from './action/citiesAction';
+import {getItineraris} from './action/itineraryAction';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+/* import PropTypes from 'prop-types'; */
 /* import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -39,11 +39,11 @@ class Itineraris extends Component {
     }
   }
 
-  static propTypes = {
+ /*  static propTypes = {
     getItineraris: PropTypes.func.isRequired,
-    itinerary: PropTypes.object.isRequired, 
+    itinerary: PropTypes.object.isRequired,  */
   // isAuthenticated: PropTypes.bool
-};
+/* }; */
   /*   state ={
         listaPaises: []
     } */
@@ -61,12 +61,13 @@ class Itineraris extends Component {
 
 
     render() {
-    /*   const itinerary = this.props.itineraris;
+      /* const itinerary = this.props.itineraris;
       console.log(itinerary); */
      /*  console.log(JSON.stringify(cities)) */
       return(
         <div>
-        {/* <ul>
+          ciudades
+       {/*  <ul>
         {cities.map((elem, i)=>{return <button><li key={i}>{elem.name}</li></button>})           }
         </ul> */}
         </div>
@@ -82,10 +83,11 @@ class Itineraris extends Component {
 };
 
 const mapStateToProps= state =>{
-  console.log(state.itinerary);
+  console.log(state);
   
   return{
-    itineraris:state.itinerary}
+    itineraris: state.itinerary.itineraries}
+    
 };
 
 export default connect(mapStateToProps,{getItineraris})(Itineraris);

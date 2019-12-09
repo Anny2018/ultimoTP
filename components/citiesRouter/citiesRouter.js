@@ -11,6 +11,24 @@ router.get('/city',(req, res) => {
         res.status(200).json(cities);
     });
 });
+//-------------------------------------------------------
+
+router.get('/:name',
+	(req, res) => {
+  		let cityRequested = req.params.name;
+  		citiesModel.findOne({ name: cityRequested })
+			.then(city => {
+				res.send(city)
+			})
+			.catch(err => console.log(err));
+});
+
+router.route('/city/:id').get( function (req, res) {
+    citiesModel.findOne({_id:req.params.id})
+    .then(data=>res.send(data))
+    .catch(err=>console.log(err));
+})
+
 
 router.post('/city', (req, res) => {
     const newCity = new citiesModel(req.body);

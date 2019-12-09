@@ -41,12 +41,24 @@ const itinerarySchema=mongoose.Schema({
     },
     price:{
         type: Number
-    }
-   /*  hashtap:{
+    },
+    hashtap:{
         type:Array
-    } */
+    },
+    url:{
+        type:String
+    },
+   /*  cities: {
+        type: String
+      } */
+    cityId:{
+        type: mongoose.Types.ObjectId,
+        ref: 'cities'
+    }
+   
    });
     
 
 
-module.exports = mongoose.model('iteneraris', itinerarySchema)
+var iteneraris= mongoose.model('iteneraris', itinerarySchema,'iteneraris')
+module.exports=iteneraris;
