@@ -12,6 +12,40 @@ router.get('/iteneraris',(req, res) => {
     });
 });
 
+router.get('/itineraries/:cityid',
+(req, res) => {
+    console.log(req.params.cityid)
+    console.log("hola")
+      let cityRequested = req.params.cityid;
+      itineraryModel.find({ cityid: cityRequested })
+        .then(itinerary => {
+            res.send(itinerary);
+            console.log(itinerary)
+        })
+        .catch(err => console.log(err));
+});
+
+/* router.route('/itineraries/:idCity').get(function (req, res) {
+    console.log('entro  abuscar ');
+    console.log(req.params.idCity);
+    
+    itineraryModel.find({
+            cityIn: req.params.idCity  // search query
+        }).populate({path:'cityId'})
+        .catch(err => {
+            console.error(err)
+        })
+        .then(doc => {
+            console.log(res.send(doc));
+            return res.send(doc)
+           
+            
+        })
+        
+}); */
+
+
+
 router.post('/itinerary', (req, res) => {
     const newCity = new itineraryModel(req.body);
     newCity.save((err, city) => {

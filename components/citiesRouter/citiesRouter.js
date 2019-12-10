@@ -12,6 +12,14 @@ router.get('/city',(req, res) => {
     });
 });
 
+const getCityItinerary = (req,res) =>{
+    let cityRequested = req.params._id;  
+    City
+    .findOne({_id:cityRequested})
+    .populate("iteneraris") //modelo del que trae los docs
+    .then((city)=>{res.send(city).status(204)}
+    )};  
+
 router.post('/city', (req, res) => {
     const newCity = new citiesModel(req.body);
     newCity.save((err, citySaved) => {

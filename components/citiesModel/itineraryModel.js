@@ -41,9 +41,14 @@ const itinerarySchema=mongoose.Schema({
     },
     price:{
         type: Number
-    }
+    },
    /*  hashtap:{
         type:Array
+    } */
+
+  /*   cityId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'cities'
     } */
    });
     

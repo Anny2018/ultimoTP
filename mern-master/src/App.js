@@ -18,9 +18,10 @@ function App() {
       <Header />
       <Router>
                 <Switch>
-                  <Route exact={true} path="/" component={Content} />
+                <Route exact={true} path="/" component={Login} />    
+                  <Route  path="/" component={Content} />
                   <Route path="/cities" component={Cities} />
-                  <Route path="/login" component={Login} />
+                 {/*  <Route path="/login" component={Login} /> */}
                   <Route path="/signup" component={Signup} />
                 </Switch>  
       <Footer />
