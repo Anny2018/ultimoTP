@@ -46,10 +46,10 @@ const itinerarySchema=mongoose.Schema({
         type:Array
     } */
 
-  /*   cityId: {
+    cityId: {
         type: mongoose.Types.ObjectId,
         ref: 'cities'
-    } */
+    }
    });
     
 

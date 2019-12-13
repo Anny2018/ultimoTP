@@ -2,8 +2,9 @@ var express= require('express');
 var router = express.Router();
 const passport= require('passport');
 const jwt= require('jsonwebtoken');
+
 var usuarioModel=require('../citiesModel/userModel');
-const key =require('./secretKey.js');
+const key =require('../auth/secretKey');
 require('./passportGoogle')
 
 router.post('/logins', function (req, res) {
@@ -53,7 +54,7 @@ router.post('/login', function (req, res) {
                 const options = { expiresIn: 2592000 };
                 jwt.sign(
                     payload,
-                    key.secretOrKey,
+                    "secret",
                     options,
                     (err, token) => {
                         if (err) {
