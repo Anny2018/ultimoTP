@@ -21,19 +21,8 @@ class Login extends Component {
         this.setState(state)
     }
 
-    onLogin = async () => {
-        await this.props.loginUser(this.state);
-        
-        console.log("login", this.props.login);
-        this.onLoginSuccess(this.props.login.token)
 
-    }
-
-    componentWillUnmount(){
-        this.setState({ username: "", password: "" })
-    }
-
-    async onLoginSuccess(token) {
+    onLoginSuccess(token) {
         console.log(token);
     
         axios.defaults.headers.common.Authorization = 'bearer ' + token;
@@ -49,6 +38,20 @@ class Login extends Component {
     
       }
 
+    onLogin = async () => {
+        await this.props.loginUser(this.state);
+        
+        console.log("login", this.props.login);
+        console.log("login", this.props.login.login.token);
+        this.onLoginSuccess(this.props.login.login.token);
+
+    }
+
+    componentWillUnmount(){
+        this.setState({ username: "", password: "" })
+    }
+
+
     signGoogle = () =>{
         window.location.href = "http://localhost:5000/api/auth/google"
     }
@@ -56,8 +59,8 @@ class Login extends Component {
     render() {
         let content;
         // console.log(this.props.login);
-        if (this.props.login.token) {
-            content = <Redirect to='/home'></Redirect>
+        if (this.props.login.login.token) {
+            content = <Redirect to='/cities'></Redirect>
         } else {
             content = <div className="container">
                 <h1>Login</h1>

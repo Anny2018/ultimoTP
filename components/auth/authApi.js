@@ -4,7 +4,7 @@ const passport= require('passport');
 const jwt= require('jsonwebtoken');
 
 var usuarioModel=require('../citiesModel/userModel');
-const key =require('../auth/secretKey');
+const key =require('./secretKey.js');
 require('./passportGoogle')
 
 router.post('/logins', function (req, res) {
@@ -39,7 +39,7 @@ router.post('/logins', function (req, res) {
 router.post('/login', function (req, res) {
     usuarioModel.findOne({ username: req.body.username })
         .then(user => {
-            console.log(user);
+    /*         console.log(user); */
 
             if (!user) {
                 return res.send({ message: 'Incorrect userName.' });
@@ -96,7 +96,7 @@ router.get('/auth/google',
     passport.authenticate('google', { scope: ['email', 'profile'] }));
 
 router.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: 'http://localhost:5000/', session: false }),
+    passport.authenticate('google', { failureRedirect: 'http://localhost:3000/', session: false }),
     function (req, res) {
         console.log('entro', req.user);
         const token = jwt.sign(req.user.toJSON(), secret, {
@@ -104,7 +104,7 @@ router.get('/auth/google/callback',
         });
 
         // res.redirect('http://localhost:3000/home');
-        res.redirect('http://localhost:5001/api/auth/' + token);
+        res.redirect('http://localhost:3001/api/auth/' + token);
     });
 
 
